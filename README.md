@@ -21,3 +21,35 @@ export default function App() {
 1. 子组件形如 <Child/>，不接受任何 props
 2. 父组件是由于 setA 而重新 render，但是子组件形如 <Child b={B}/>
 
+#### 下面的 Money 就不必加 React.memo
+```
+const Money = () => {
+
+    const [tags, setTags] = useState<Tag[]>([
+        {id: 1, name: 'fuck'},
+        {id: 2, name: 'fuck2'},
+        {id: 3, name: 'fuck3'},
+        {id: 4, name: 'fuck4'},
+    ])
+
+    const [selectedTags, setSelectedTags] = useState<string[]>([])
+
+    const onUpdateTags = (tags: Tag []) => {
+        console.log('onUpdateTags');
+        setTags(tags)
+    }
+
+    const onUpdateSelectedTags = (tags: string[]) => {
+        console.log('onUpdateSelectedTags');
+        setSelectedTags(tags)
+    }
+
+    return (
+    ...
+            <MoneyTags tags={tags} selectedTags={selectedTags} onUpdateTags={onUpdateTags}
+                       onUpdateSelectedTags={onUpdateSelectedTags}/>
+     ...
+     )
+}
+```
+
