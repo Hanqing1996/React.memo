@@ -13,3 +13,4 @@ export default function App() {
   );
 }
 ```
+* 父组件的 render 一定会引起子组件 props 的值变化，这种情况下子组件不必加 React.memo（不然徒增判断新旧props差异的损耗）。
