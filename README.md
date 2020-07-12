@@ -18,6 +18,8 @@ export default function App() {
 
 #### 什么情况子组件要加 React.memo
 > 要搞清楚父组件因为什么而重新 render（第一次 render 不必考虑，此次的子组件 render 是必要的）
+
+> 最简单的验证方法，如果加不加都一样（log一下，发现子组件都render了），就不必加
 1. 子组件形如 <Child/>，不接受任何 props
 2. 父组件是由于 setA 而重新 render，但是子组件形如 <Child b={B}/>
 
