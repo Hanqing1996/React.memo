@@ -14,3 +14,10 @@ export default function App() {
 }
 ```
 * 父组件的 render 一定会引起子组件 props 的值变化，这种情况下子组件不必加 React.memo（不然徒增判断新旧props差异的损耗）。
+
+
+#### 什么情况子组件要加 React.memo
+> 要搞清楚父组件因为什么而重新 render（第一次 render 不必考虑，此次的子组件 render 是必要的）
+1. 子组件形如 <Child/>，不接受任何 props
+2. 父组件是由于 setA 而重新 render，但是子组件形如 <Child b={B}/>
+
